@@ -1,5 +1,4 @@
 from Rosmaster_Lib import Rosmaster
-import math
 import time
 
 if __name__ == '__main__':
@@ -10,3 +9,9 @@ if __name__ == '__main__':
             time.sleep(1)
     except KeyboardInterrupt:
         print("Shutting down")
+    finally:
+        # Always stop motors on exit
+        try:
+            ros.set_motor(0, 0, 0, 0)
+        except Exception:
+            pass
