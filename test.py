@@ -1,8 +1,8 @@
-import Rosmaster_Lib
+from Rosmaster_Lib import Rosmaster
 import math
 import time
 
 if __name__ == '__main__':
-    ros = Rosmaster_Lib.Rosmaster_Lib()
+    ros = Rosmaster()
 
     ros.set_motor(10, 10, 10, 10)
