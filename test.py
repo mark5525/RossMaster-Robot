@@ -10,7 +10,7 @@ if __name__ == '__main__':
         # ---- 1️⃣ Forward 5 seconds ----
         print("Forward 5s")
         ros.set_car_run(1, speed)
-        time.sleep(5)
+        time.sleep(3)
         ros.set_car_run(0, 0)
         time.sleep(0.5)
 
