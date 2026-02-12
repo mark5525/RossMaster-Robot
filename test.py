@@ -5,7 +5,7 @@ if __name__ == '__main__':
     ros = Rosmaster()
 
     forward_speed = 30
-    run_time = 3   # seconds
+    run_time = 6   # seconds
 
     try:
         # ---- Move Forward ----
