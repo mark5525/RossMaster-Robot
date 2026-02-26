@@ -11,10 +11,10 @@ def generate_launch_description():
             parameters=[{
                 'serial_port': '/dev/ttyUSB1',
                 'baudrate': 115200,
-                'max_linear': 0.4,
-                'max_angular': 1.5,
+                'max_linear': 0.08,
+                'max_angular': 0.8,
                 'wheelbase': 0.23,
-                'timeout_sec': 0.5,
+                'timeout_sec': 0.25,
             }]
         )
     ])
