@@ -5,12 +5,18 @@ from .Rosmaster_Lib import Rosmaster
 
 
 class RossmasterDriver(Node):
-
     def __init__(self):
         super().__init__('rossmaster_driver')
 
-        self.get_logger().info("Initializing Rosmaster...")
-        self.robot = Rosmaster()
+        # configurable port + baud
+        self.declare_parameter('serial_port', '/dev/ttyUSB1')
+        self.declare_parameter('baudrate', 115200)
+
+        port = str(self.get_parameter('serial_port').value)
+        baud = int(self.get_parameter('baudrate').value)
+
+        self.get_logger().info(f"Initializing Rosmaster on {port} @ {baud}...")
+        self.robot = Rosmaster(com=port, baudrate=baud)
         self.get_logger().info("Rosmaster initialized successfully.")
 
 

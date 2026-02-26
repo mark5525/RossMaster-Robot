@@ -8,16 +8,14 @@ import threading
 
 
 # V3.3.9
-class Rosmaster(object):
-    __uart_state = 0
-
-    def __init__(self, car_type=1, com="/dev/myserial", delay=.002, debug=False):
+class Rosmaster:
+    def __init__(self, car_type=1, com="/dev/ttyUSB1", baudrate=115200, delay=.002, debug=False):
         # com = "COM30"
         # com="/dev/ttyTHS1"
         # com="/dev/ttyUSB0"
         # com="/dev/ttyAMA0"
 
-        self.ser = serial.Serial(com, 115200)
+        self.ser = serial.Serial(com, baudrate)
 
         self.__delay_time = delay
         self.__debug = debug
@@ -131,9 +129,11 @@ class Rosmaster(object):
         time.sleep(.002)
 
     def __del__(self):
-        self.ser.close()
-        self.__uart_state = 0
-        print("serial Close!")
+        try:
+            if hasattr(self, "ser") and self.ser:
+                self.ser.close()
+        except Exception:
+            pass
 
     # 根据数据帧的类型来做出对应的解析
     # According to the type of data frame to make the corresponding parsing
