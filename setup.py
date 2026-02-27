@@ -20,6 +20,7 @@ setup(
     entry_points={
         'console_scripts': [
             'driver_node = rossmaster_robot.driver_node:main',
+            'odom_node = rossmaster_robot.odom_node:main',
         ],
     },
 )
